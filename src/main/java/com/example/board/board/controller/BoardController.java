@@ -59,12 +59,11 @@ public class BoardController {
         게시글 수정 -> Request로 member의 pk 와 board의 pk title content를 받아서 수정된 부분을 반환
     */
 
-    @PutMapping("/modify/{boardId}/{memberId}")
-    public ResponseEntity<UpdatingBoardResponse> modifyPost(@PathVariable("boardId")Long boardId,
-                                                            @PathVariable("memberId")Long memberId,
+    @PutMapping("/modify/{memberId}")
+    public ResponseEntity<UpdatingBoardResponse> modifyPost(@PathVariable("memberId")Long memberId,
                                                             @RequestBody BoardRequest boardRequest){
 
-        return ResponseEntity.ok().body(boardService.modifyPost(boardId,memberId,boardRequest));
+        return ResponseEntity.ok().body(boardService.modifyPost(memberId,boardRequest));
     }
 
 

@@ -76,18 +76,18 @@ public class BoardService {
      */
 
     @Transactional
-    public UpdatingBoardResponse modifyPost(Long boardId, Long memberId, BoardRequest boardRequest){
-        if(!boardRepository.existsById(boardId)){
+    public UpdatingBoardResponse modifyPost(Long memberId, BoardRequest boardRequest){
+        if(!boardRepository.existsById(boardRequest.getBoardId())){
             throw new BoardNotFoundException();
         }
 
-        if(!showPostById(boardId).getMember().getMemberId().equals(memberId)){
+        if(!showPostById(boardRequest.getBoardId()).getMember().getMemberId().equals(memberId)){
             throw new MemberNotFoundException();
         }
 
         LocalDateTime formatDate = LocalDateTime.now();
 
-        Board board = showPostById(boardId);
+        Board board = showPostById(boardRequest.getBoardId());
 
         board.update(boardRequest.getTitle(),
                 boardRequest.getContent(),
