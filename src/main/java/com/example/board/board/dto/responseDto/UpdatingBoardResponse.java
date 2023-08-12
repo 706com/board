@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class UpdateBoardResponse {
+public class UpdatingBoardResponse {
 
     private String title;
 
@@ -15,7 +15,7 @@ public class UpdateBoardResponse {
     private LocalDateTime updateDateTime;
 
     @Builder
-    UpdateBoardResponse(String title, String content, LocalDateTime updateDateTime){
+    UpdatingBoardResponse(String title, String content, LocalDateTime updateDateTime){
         this.title = title;
         this.content = content;
         this.updateDateTime = updateDateTime;

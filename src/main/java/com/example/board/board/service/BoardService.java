@@ -2,25 +2,17 @@ package com.example.board.board.service;
 
 import com.example.board.board.domain.Board;
 import com.example.board.board.dto.requestDto.BoardRequest;
-import com.example.board.board.dto.responseDto.BoardResponse;
-import com.example.board.board.dto.responseDto.UpdateBoardResponse;
+import com.example.board.board.dto.responseDto.UpdatingBoardResponse;
 import com.example.board.board.exception.BoardNotFoundException;
 import com.example.board.board.repository.BoardRepository;
-import com.example.board.member.domain.Member;
 import com.example.board.member.exception.MemberNotFoundException;
-import com.example.board.member.repository.MemberRepository;
 import com.example.board.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -84,7 +76,7 @@ public class BoardService {
      */
 
     @Transactional
-    public UpdateBoardResponse modifyPost(Long boardId, Long memberId, BoardRequest boardRequest){
+    public UpdatingBoardResponse modifyPost(Long boardId, Long memberId, BoardRequest boardRequest){
         if(!boardRepository.existsById(boardId)){
             throw new BoardNotFoundException();
         }
@@ -101,7 +93,7 @@ public class BoardService {
                 boardRequest.getContent(),
                 formatDate);
 
-        return UpdateBoardResponse.builder()
+        return UpdatingBoardResponse.builder()
                 .title(board.getTitle())
                 .content(board.getContent())
                 .updateDateTime(board.getUpdateDateTime())

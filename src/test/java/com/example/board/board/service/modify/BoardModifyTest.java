@@ -2,12 +2,9 @@ package com.example.board.board.service.modify;
 
 import com.example.board.board.domain.Board;
 import com.example.board.board.dto.requestDto.BoardRequest;
-import com.example.board.board.dto.responseDto.UpdateBoardResponse;
-import com.example.board.board.exception.BoardNotFoundException;
 import com.example.board.board.repository.BoardRepository;
 import com.example.board.board.service.BoardService;
 import com.example.board.member.domain.Member;
-import com.example.board.member.exception.MemberNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 import static org.mockito.ArgumentMatchers.any;
